@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-
+import { Routes, Route, Link } from "react-router-dom";
+import { Home } from './components/home';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home/>
+   {/* <Routes> */}
+        {/* <Route path="/" element={<Home/>} /> */}
+        {/* <Route index path="/login" element={<Login />} /> */}
+        {/* <Route path="/home" element={<Home />}> */}
+          {/* <Route path="info" element={<Info />} /> */}
+          {/* <Route path="todos" element={<Todos />} /> */}
+          {/* <Route path="posts" element={<Posts />} /> */}
+
+          {/* <Route path="albums" element={<Albums />} /> */}
+          {/* <Route path="albums/:albumsId" element={<Photos />} /> */}
+        {/* </Route> */}
+        {/* <Route path="*" element={<Error />} /> */}
+      {/* </Routes> */}
     </div>
   );
 }
-
+const Error = () => {
+  return (<>
+    <h2>404</h2>
+    <p>page not found</p>
+    <Link to={"/login"}> Login </Link>
+  </>);
+}
 export default App;
