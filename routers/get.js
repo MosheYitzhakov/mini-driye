@@ -9,7 +9,7 @@ module.exports = router;
 
 const getData = async (url) => {
     const data = await fsP.readdir(url)
-    const organizedFolder = { files: [], folder: [] };
+    const organizedFolder = { files: [], folders: [] };
     try {
         for (v of data) {
             const dataV = await fsP.stat(path.join(url, v));
@@ -20,7 +20,7 @@ const getData = async (url) => {
                 created: dataV.birthtime
             }
             if (dataV.isDirectory()) {
-                organizedFolder.folder.push({ name: v, ...info })
+                organizedFolder.folders.push({ name: v, ...info })
             }
             else {
                 organizedFolder.files.push({ name: v, ...info })

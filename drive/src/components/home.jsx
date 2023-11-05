@@ -1,38 +1,33 @@
-import React, { useState } from 'react';
-import { Created } from './creatNewThing';
+import React, { useEffect, useState } from 'react';
+import "./home.css"
+// import { Created } from './creatNewThing';
 import axios from "axios";
+import { Table } from './createTible';
 export const Home = () => {
-    const [newF, setNewF] = useState(false);
-    const [allData,setAllData] = useState();
-  (  async()=>{
-        try {
-            const {data} = await  axios.get('http://localhost:3333/');
-            setAllData(data);
-        } catch (error) {
-            console.log(error);
+    const [data, setData] = useState({});
+    useEffect(() => {
+        async function name() {
+            try {
+                const { data } = await axios.get("http://localhost:3333");
+                setData(data);
+            } catch (error) {
+                console.log(error);
+            }
         }
-    })()
-    const handleNew = () => {
-        setNewF(true)
-    }
+        name()
+    }, [])
 
     return (
-        <>
-        {/* <input onClick={setNewF(false)}> */}
-            <div>
-                <h1>Welcome to the home page</h1>
-                <input type='button' value={'new +'} onClick={handleNew} />
-                {allData && <Created setNewF='setNewF' />}
+        <div >
+            
+            <h2>תיקיות</h2>
+            {data.folders &&
+                <Table data={data.folders} />}
+            <h2>קבצים</h2>
+            {data.files &&
+                <Table data={data.files} />}
+        </div>
 
-            </div>
-            <div className='homeFiolder'>
-                <h3>תיקיות</h3>
-            </div>
-            <div className='homeFiles'>
-                <h3>קבצים</h3>
 
-            </div>
-            {/* </input> */}
-        </>
     )
 }

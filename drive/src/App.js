@@ -1,24 +1,27 @@
 // import logo from './logo.svg';
 import './App.css';
-import { Routes, Route, Link } from "react-router-dom";
+import {BrowserRouter , Routes, Route, Link } from "react-router-dom";
 import { Home } from './components/home';
+import { Bar } from './components/navigationBar';
 function App() {
   return (
     <div className="App">
-      <Home/>
-   {/* <Routes> */}
-        {/* <Route path="/" element={<Home/>} /> */}
-        {/* <Route index path="/login" element={<Login />} /> */}
-        {/* <Route path="/home" element={<Home />}> */}
-          {/* <Route path="info" element={<Info />} /> */}
-          {/* <Route path="todos" element={<Todos />} /> */}
-          {/* <Route path="posts" element={<Posts />} /> */}
+ <BrowserRouter>
+  <Bar/>
+   <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route index path="/login" element={<Home />} />
+        <Route path="/home" element={<Home />}>
+          <Route path="info" element={<Home />} />
+          <Route path="todos" element={<Home />} />
+          <Route path="posts" element={<Error />} />
 
-          {/* <Route path="albums" element={<Albums />} /> */}
-          {/* <Route path="albums/:albumsId" element={<Photos />} /> */}
-        {/* </Route> */}
-        {/* <Route path="*" element={<Error />} /> */}
-      {/* </Routes> */}
+          <Route path="albums" element={<Error />} />
+          <Route path="albums/:albumsId" element={<Error />} />
+        </Route>
+        <Route path="*" element={<Error />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
@@ -26,7 +29,7 @@ const Error = () => {
   return (<>
     <h2>404</h2>
     <p>page not found</p>
-    <Link to={"/login"}> Login </Link>
+    <Link to={"/Home"}> Login </Link>
   </>);
 }
 export default App;
