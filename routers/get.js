@@ -19,10 +19,10 @@ const getData = async (url) => {
                 atime: dataV.atime,
                 created: dataV.birthtime
             }
-            if (dataV.isDirectory()){
+            if (dataV.isDirectory()) {
                 organizedFolder.folder.push({ name: v, ...info })
             }
-            else{
+            else {
                 organizedFolder.files.push({ name: v, ...info })
             }
         }
@@ -32,45 +32,19 @@ const getData = async (url) => {
 
     return organizedFolder;
 }
-router.get('/', async (req, res) => {
-    try {
-        const data = path.join(__dirname,'..', 'userData')
-        const all = await getData(data)
-        // const all = await getInfo(data)
-        console.log(all);
-    } catch (err) {
-        console.error(err.message);
-    }
-    res.send();
-})
-
-
-.get('/*', async (req, res) => {
-    const namePath = path.join(__dirname,'..', 'userData', req.url)
-    const slicePath = namePath.slice(0, -1)
-    try {
-        // const info = await getInfo(slicePath);
-        const data = await getData(slicePath);
-        console.log(data);
-      
-    } catch (err) {
-        console.error(err.message);
-    }
-    res.send() // כשמקבלים צריך לבדוק שהוא לא ריק
-})
-
 
 router.get('/*', async (req, res) => {
-    const namePath = path.join(__dirname, 'userData', req.url)
+    const namePath = path.join(__dirname, '..', 'userData', req.url)
     const slicePath = namePath.slice(0, -1)
+    // console.log(slicePath);
+    //   const  replace = slicePath.replaceAll(" ", "")
+    // console.log(replace)
     try {
-        // const info = await getInfo(slicePath);
         const data = await getData(slicePath);
-        console.log(data);
-      
+        res.send(data)
+
     } catch (err) {
         console.error(err.message);
+        res.status(404).send("no such file or directory" + req.url);
     }
-    
-    res.send() // כשמקבלים צריך לבדוק שהוא לא ריק
 })
