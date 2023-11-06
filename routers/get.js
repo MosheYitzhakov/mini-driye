@@ -34,6 +34,8 @@ const getData = async (url) => {
 }
 
 router.get('/*', async (req, res) => {
+console.log(req.url);
+
     const namePath = path.join(__dirname, '..', 'userData', req.url)
     const slicePath = namePath.slice(0, -1)
     // console.log(slicePath);

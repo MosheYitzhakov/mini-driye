@@ -5,10 +5,10 @@ export const Bar = () => {
         <div>
 
             <nav>
-                <Link to={"info"}>info</Link> { }
-                <Link to={"posts"}>posts</Link> { }
-                <Link to={"albums"}>albums</Link> { }
-                <Link to={"todos"}>todos</Link> { }
+                {/* <Link to={"/home/info"}>info</Link> { }
+                <Link to={"/posts"}>posts</Link> { }
+                <Link to={"/albums"}>albums</Link> { }
+                <Link to={"/todos"}>todos</Link> { } */}
                 <Link to={"/login"}>logout</Link>
             </nav>
         </div>
