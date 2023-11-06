@@ -1,1 +1,1 @@
-{"name":"myText.txt"}
+"name":"myText.txt"

@@ -27,7 +27,7 @@ const getData = async (url) => {
             }
         }
     } catch (error) {
-        return error;
+        return error.message;
     }
 
     return organizedFolder;
