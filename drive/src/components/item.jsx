@@ -37,8 +37,8 @@ export const Item = ({ name, type, created ,setF}) => {
 }
 
 const deleteI = (pathname) => {
-    axios.delete("http://localhost:3333" + pathname).then(() => {
-        console.log(`deleted`)
+    axios.delete("http://localhost:3333" + pathname).then((data) => {
+        console.log(data.data)
     }
     ).catch(e => {
         console.error(e)

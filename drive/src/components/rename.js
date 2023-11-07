@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-
 export const Rename = ({ setItems, name }) => {
     const { pathname } = useLocation();
     const [neww, setNew] = useState('');
@@ -31,7 +30,8 @@ export const Rename = ({ setItems, name }) => {
         }
 
         console.log(pathname === '/');
-        axios.put("http://localhost:3333" + pathname + name, {
+       
+        axios.put( "http://localhost:3333" + pathname + name, {
             name: newName,
             command: 'rename'
         }).then(() => {

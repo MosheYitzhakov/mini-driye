@@ -27,9 +27,9 @@ export const CreateNew = ({ setNewItem }) => {
         axios.post("http://localhost:3333" + pathname, {
             name: name,
             command: select
-        }).then(() => {
+        }).then((data) => {
+            console.log(data.data);
             console.log(`post ${neww}`)
-            setNewItem(false)
         }
         ).catch(e => {
             console.error(e)
@@ -39,6 +39,7 @@ export const CreateNew = ({ setNewItem }) => {
     return (
         <>
             <form>
+                {/* <br/> */}
                 <input type="text" value={neww} onChange={e => { setNew(e.target.value) }} />
                 <br />
                 <button onClick={(e) => newFile(e)} >add</button>
