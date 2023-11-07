@@ -14,6 +14,7 @@ router.delete('/*',async(req,res)=>{
 
         }else if (data.isDirectory()) {
             await fsP.rm(path.join(__dirname,'../userData',req.url),{ recursive: true, force: true })
+           
         } else {
             
         }

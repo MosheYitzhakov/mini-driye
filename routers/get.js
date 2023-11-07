@@ -7,7 +7,7 @@ module.exports = router;
 
 
 
-const getData = async (url) => {
+ const getData = async (url) => {
     const data = await fsP.readdir(url)
     const organizedFolder = { files: [], folders: [] };
     try {
