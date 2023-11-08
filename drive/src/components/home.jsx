@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./home.css"
 import { List } from './list';
-import { CreateNew } from "./create";
+import { Create } from "./create";
 export const Home = ({ data }) => {
     const [newItem, setNewItem] = useState(false)
     const [folders, setFolders] = useState()
@@ -22,7 +22,7 @@ export const Home = ({ data }) => {
             {str ? <h3>{data}</h3> :
                 <div>
                     <button onClick={() => { setNewItem((prv) => { return !prv }) }}>new</button>
-                    {newItem && <CreateNew setNewItem={setNewItem} />}
+                    {newItem && <Create setFi={setFils} setFol={setFolders} setN={setNewItem}/>}
                     <h2>תיקיות</h2>
                     {folders && <List data={folders} setF={setFolders}/>
                     }

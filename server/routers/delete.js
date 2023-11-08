@@ -7,6 +7,9 @@ const path = require('path');
 
 
 router.delete('/*', async (req, res) => {
+    let data = path.join(__dirname, '../userData', req.url);
+    const index = data.lastIndexOf('\\');
+    const filePathSlice = data.slice(index)
     try {
         const data = await fsP.stat(path.join(__dirname, '../userData', req.url))
         if (data.isFile()) {
@@ -14,7 +17,7 @@ router.delete('/*', async (req, res) => {
             res.send('delete')
         } else if (data.isDirectory()) {
             await fsP.rm(path.join(__dirname, '../userData', req.url), { recursive: true, force: true })
-            res.send('delete')
+            res.send({delete:filePathSlice})
         }
 
     } catch (error) {

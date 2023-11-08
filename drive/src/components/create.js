@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 
-export const CreateNew = ({ setNewItem }) => {
+export const Create = ({ setFol, setFi, setN }) => {
     const { pathname } = useLocation();
     const [neww, setNew] = useState('');
     const [select, setSelect] = useState('file');
@@ -28,18 +28,24 @@ export const CreateNew = ({ setNewItem }) => {
             name: name,
             command: select
         }).then((data) => {
-            console.log(data.data);
-            console.log(`post ${neww}`)
+            if(select === 'file'){
+                setFi((prv)=>[...prv, data.data])
+            } else{
+                setFol((prv)=>[...prv, data.data])
+            }
+            setN((prv)=>!prv)
         }
         ).catch(e => {
-            console.error(e)
+            if(e.response.status=== 409){
+               setP("this is Already exists"); 
+            }
+            
         })
     }
 
     return (
         <>
-            <form>
-                {/* <br/> */}
+                <br/>
                 <input type="text" value={neww} onChange={e => { setNew(e.target.value) }} />
                 <br />
                 <button onClick={(e) => newFile(e)} >add</button>
@@ -49,7 +55,6 @@ export const CreateNew = ({ setNewItem }) => {
                     <option>folder</option>
                 </select>
                 {<p>{p}</p>}
-            </form>
         </>
 
     )
