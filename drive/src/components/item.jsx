@@ -25,7 +25,7 @@ export const Item = ({ name, type, created ,setF}) => {
 
             <button onClick={() => { setItems((prv) => { return [true, false] }) }}>Copy</button>
             <button onClick={() => { setItems((prv) => { return [false, true] }) }}>Rename</button>
-            <button onClick={() => { deleteI(pathname+'/'+name,setF) }}>delete</button>
+            <button onClick={() => { deleteI(pathname,name,setF) }}>delete</button>
             <>{Items[0] && <Copy name={name} setItems={setItems} setF={setF} />}
                 {Items[1] && <Rename name={name} setItems={setItems} setF={setF}/>}</>
 
