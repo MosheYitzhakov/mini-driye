@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./home.css"
+// import "./home.css"
 import { List } from './list';
 import { Create } from "./create";
 export const Home = ({ data }) => {
@@ -18,16 +18,26 @@ export const Home = ({ data }) => {
     return (
 
         <div >
+            {str ? <div style={{
+                margin: '20px',
+                border: '3px solid blue',
+                borderRadius: '10px'
+            }}>
 
-            {str ? <h3>{data}</h3> :
+                <h2>The content in file is this</h2>
+                <h3>{data}</h3>
+            </div>
+                :
                 <div>
-                    <button onClick={() => { setNewItem((prv) => { return !prv }) }}>new</button>
-                    {newItem && <Create setFi={setFils} setFol={setFolders} setN={setNewItem}/>}
-                    <h2>תיקיות</h2>
-                    {folders && <List data={folders} setF={setFolders}/>
+                    <button style={{marginTop: "10px"}} onClick={() => { setNewItem((prv) => { return !prv }) }}>new</button>
+                    {newItem && <Create setFi={setFils} setFol={setFolders} setN={setNewItem} />}
+                    <h1>תיקיות</h1>
+                    <br />
+                    {folders && <List data={folders} setF={setFolders} />
                     }
-                    <h2>קבצים</h2>
-                    {files && <List data={files} setF={setFils}/>}
+                    <h1>קבצים</h1>
+                    <br />
+                    {files && <List data={files} setF={setFils} />}
                 </div>
             }
         </div>

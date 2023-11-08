@@ -28,16 +28,15 @@ export const Copy = ({ setItems, name, setF }) => {
 
         }
 
-        console.log(pathname === '/');
         axios.put("http://localhost:3333" + pathname + name, {
             name: newName,
             command: 'copy'
         }).then((data) => {
             setF((prv)=>[...prv, data.data])
-            setItems([false, false])
+            setItems( false)
         }
         ).catch(e => {
-            console.error(e)
+            return setP(e.message)
         })
     }
     return (

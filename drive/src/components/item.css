@@ -1,0 +1,59 @@
+span{
+  margin: 10;
+}
+/* .itmeDiv{
+  border: 2 solid red;
+  width: 25%;
+    height: 30px;
+    /* float: left; */
+    /* display: inline-block; */
+    /* text-align: center; */
+    /* line-height: 30px; */
+
+/* } */ */
+/* home.css */
+
+*{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 10px;
+  border: 10px solid #d72727;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+* a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+* button {
+  padding: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: #8feced;
+  color: rgb(161, 73, 73);
+  border: none;
+  border-radius: 5px;
+}
+
+* button:hover {
+  background-color: #45a049;
+}
+
+
+.folder:before {
+  content: "\1F4C1"; /* Unicode character for a folder icon */
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.file:before {
+  content: "\1F4C4"; /* Unicode character for a document icon */
+  font-size: 30px;
+  margin-right: 10px;
+}
+

@@ -9,9 +9,7 @@ export const deleteI = (pathname, name, setF) => {
         url = `http://localhost:3333${pathname}/${name}`;
     }
 
-    console.log("url", url);
-    console.log(name);
-    axios.delete(url).then((data) => {
+    axios.delete(url).then(() => {
         let nameDeleded = name
         setF((prv) => {
             const newPrv = prv.filter(item => item.name !== nameDeleded);

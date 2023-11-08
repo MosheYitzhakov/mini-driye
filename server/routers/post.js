@@ -21,7 +21,6 @@ router.post('/*', async (req, res) => {
             }
             if (req.body.command === 'file') {
                 //create file in the folder
-                console.log(path.join(pathUrl, req.body.name));
                 createDir = await fsP.open(path.join(pathUrl, req.body.name), 'w');
             } else if (req.body.command === 'folder') {
                 createDir = await fsP.mkdir(path.join(pathUrl, req.body.name), { recursive: true });

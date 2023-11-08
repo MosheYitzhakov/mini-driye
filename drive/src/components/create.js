@@ -18,12 +18,10 @@ export const Create = ({ setFol, setFi, setN }) => {
         if (select === 'file') {
           
             const dot = neww.substring(neww.length - 4).includes('.')
-            console.log(dot);
             if (!dot) {
                 name += '.txt'
             }
         }
-        console.log(name);
         axios.post("http://localhost:3333" + pathname, {
             name: name,
             command: select
