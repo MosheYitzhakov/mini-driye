@@ -1,4 +1,4 @@
-import axios from 'axios';
+import  instance  from './API';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ export const Create = ({ setFol, setFi, setN }) => {
                 name += '.txt'
             }
         }
-        axios.post("http://localhost:3333" + pathname, {
+        instance.post(pathname, {
             name: name,
             command: select
         }).then((data) => {

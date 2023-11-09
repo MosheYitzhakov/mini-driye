@@ -1,36 +1,23 @@
-// import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { Home } from './components/home';
 import { Bar } from './components/navigationBar';
 import { useEffect, useState } from 'react';
-// import axios from 'axios';
-import { instance } from './components/API';
+import  instance  from './components/API';
 function App() {
   const { pathname } = useLocation();
   const [data, setData] = useState();
   const [err, setEror] = useState();
-  // const instance = axios.create({
-  //   baseURL: process.env.NODE_ENV === "development"? "http://localhost:7000/api":"/api",
-  //   // timeout: 1000,
-  //   // headers: {'X-Custom-Header': 'foobar'}
-  // });
   let url = "/api";
-
-  // let url = instance;
-  // if (process.env.NODE_ENV === "development") {
-  //       console.log(process.env.NODE_ENV);
-  //       url = "http://localhost:7000/api";
-  //     }
   useEffect(() => {
     async function name() {
       
       try {
         if (typeof pathname === 'undefined') {
-          const { data } = await instance.get(url);
+          const { data } = await instance.get();
           setData(data);
         } else {
-          const { data } = await instance.get(url+ pathname);
+          const { data } = await instance.get(pathname);
           setData(data);
         }
 
@@ -40,7 +27,7 @@ function App() {
       }
     }
     name()
-  }, [pathname])
+  }, [pathname,url])
   return (
     <div className="App">
       {err ? <Error err={setEror} /> :

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import  instance  from './API';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ export const Rename = ({ setItems, name, setF }) => {
                 newName = DotNeww[0]
             }
         }
-        axios.put( "http://localhost:3333" + pathname + name, {
+        instance.put(pathname + name, {
             name: newName,
             command: 'rename'
         }).then((data) => {

@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import  instance  from './API';
 
 export const Copy = ({ setItems, name, setF }) => {
     const { pathname } = useLocation();
@@ -28,7 +27,7 @@ export const Copy = ({ setItems, name, setF }) => {
 
         }
 
-        axios.put("http://localhost:3333" + pathname + name, {
+        instance.put(pathname + name, {
             name: newName,
             command: 'copy'
         }).then((data) => {
