@@ -8,8 +8,8 @@ module.exports = router;
 
 
 router.get('*', async (req, res) => {
-console.log(req.path);
-console.log(req.url);
+// console.log(req.path);
+// console.log(req.url);
 
     const namePath = path.join(__dirname, '..', 'userData', req.url)
     // const slicePath = namePath.slice(0, -1)

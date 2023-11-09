@@ -9,9 +9,13 @@ const cors = require('cors');
 app.use(express.json())
 app.use(cors());
 app.use(express.static(path.join(path.dirname(__dirname), "drive", "build")))
-app.use("/api/" ,express.static('userData'))
+app.use((req,res, next) => {
+    console.log(req.url);
+    next();
+})
+app.use("/api" ,express.static('userData'))
 
-app.use('/api/', GRouter)
+app.use('/api', GRouter)
 app.put('/*',PutRouter)
 app.post('/*',PostRouter)
 app.delete('/*',DeleteRouter)
