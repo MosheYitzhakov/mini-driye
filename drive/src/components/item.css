@@ -1,17 +1,6 @@
 span{
   margin: 10;
 }
-/* .itmeDiv{
-  border: 2 solid red;
-  width: 25%;
-    height: 30px;
-    /* float: left; */
-    /* display: inline-block; */
-    /* text-align: center; */
-    /* line-height: 30px; */
-
-/* } */ */
-/* home.css */
 
 *{
   display: flex;
@@ -47,12 +36,12 @@ span{
 
 
 .folder:before {
-  content: "\1F4C1"; /* Unicode character for a folder icon */
+  content: "\1F4C1"; 
   font-size: 40px;
   margin-bottom: 10px;
 }
 .file:before {
-  content: "\1F4C4"; /* Unicode character for a document icon */
+  content: "\1F4C4"; 
   font-size: 30px;
   margin-right: 10px;
 }
