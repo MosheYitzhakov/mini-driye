@@ -8,7 +8,7 @@ function App() {
   const { pathname } = useLocation();
   const [data, setData] = useState();
   const [err, setEror] = useState();
-  let url = "/api";
+  // let url = "/api";
   useEffect(() => {
     async function name() {
       
@@ -27,7 +27,7 @@ function App() {
       }
     }
     name()
-  }, [pathname,url])
+  }, [pathname])
   return (
     <div className="App">
       {err ? <Error err={setEror} /> :
