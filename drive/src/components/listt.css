@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     align-items: center;
     align-content: stretch;
+    /* flex-grow: 3; */
+    /* justify-content: space-between; */
     flex-basis : 25%;
     justify-content: space-around;
     padding: 10px;
