@@ -5,19 +5,32 @@ import { Home } from './components/home';
 import { Bar } from './components/navigationBar';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { instance } from './components/API';
 function App() {
   const { pathname } = useLocation();
   const [data, setData] = useState();
   const [err, setEror] = useState();
-  const url = "http://localhost:3333/api";
+  // const instance = axios.create({
+  //   baseURL: process.env.NODE_ENV === "development"? "http://localhost:7000/api":"/api",
+  //   // timeout: 1000,
+  //   // headers: {'X-Custom-Header': 'foobar'}
+  // });
+  // let url = "/api";
+
+  let url = instance;
+  // if (process.env.NODE_ENV === "development") {
+  //       console.log(process.env.NODE_ENV);
+  //       url = "http://localhost:7000/api";
+  //     }
   useEffect(() => {
     async function name() {
+      
       try {
         if (typeof pathname === 'undefined') {
-          const { data } = await axios.get(url);
+          const { data } = await instance.get(url);
           setData(data);
         } else {
-          const { data } = await axios.get(url + pathname);
+          const { data } = await instance.get(url + pathname);
           setData(data);
         }
 
@@ -30,22 +43,22 @@ function App() {
   }, [pathname])
   return (
     <div className="App">
-    { err ?  <Error err={setEror}/>:
-     <> <h1> Drive</h1>
+      {err ? <Error err={setEror} /> :
+        <> <h1> Drive</h1>
 
-      <Bar pathname={pathname} />
-      <Routes>
-        <Route path='*' element={<Home data={data} />} />
+          <Bar pathname={pathname} />
+          <Routes>
+            <Route path='*' element={<Home data={data} />} />
 
-      </Routes>
-  </>}
-  </div>)
+          </Routes>
+        </>}
+    </div>)
 }
-const Error = ({err}) => {
+const Error = ({ err }) => {
   return (<>
     <h2>404</h2>
     <p>page not found</p>
-    <Link to={"/"} onClick={()=>err(undefined)}> Home </Link>
+    <Link to={"/"} onClick={() => err(undefined)}> Home </Link>
   </>);
 }
 export default App;
