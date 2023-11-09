@@ -17,7 +17,7 @@ function App() {
   // });
   // let url = "/api";
 
-  let url = instance;
+  // let url = instance;
   // if (process.env.NODE_ENV === "development") {
   //       console.log(process.env.NODE_ENV);
   //       url = "http://localhost:7000/api";
@@ -27,10 +27,10 @@ function App() {
       
       try {
         if (typeof pathname === 'undefined') {
-          const { data } = await instance.get(url);
+          const { data } = await instance.get();
           setData(data);
         } else {
-          const { data } = await instance.get(url + pathname);
+          const { data } = await instance.get(pathname);
           setData(data);
         }
 
