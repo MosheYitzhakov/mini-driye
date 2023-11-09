@@ -15,7 +15,13 @@ app.use('/api/', GRouter)
 app.put('/*',PutRouter)
 app.post('/*',PostRouter)
 app.delete('/*',DeleteRouter)
-app.use('*', express.static(path.join(path.dirname(__dirname), "drive", "build")))
+
+app.get('/*' ,(req, res) => {
+    const htmlPath = path.join(path.dirname(__dirname), "drive", "build", "index.html")
+    res.sendFile(htmlPath);
+})
+
+
 const port = process.env.PORT || 3333;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
