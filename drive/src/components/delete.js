@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const deleteI = (pathname, name, setF) => {
     let url;
     if (pathname === "/") {

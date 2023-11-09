@@ -8,7 +8,7 @@ const cors = require('cors');
 
 app.use(express.json())
 app.use(cors());
-
+app.use(express.static('../drive/build'))
 app.use(express.static('userData'))
 
 app.get('/*', GRouter)
