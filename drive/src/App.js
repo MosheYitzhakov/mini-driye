@@ -4,7 +4,7 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { Home } from './components/home';
 import { Bar } from './components/navigationBar';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { instance } from './components/API';
 function App() {
   const { pathname } = useLocation();
@@ -15,7 +15,7 @@ function App() {
   //   // timeout: 1000,
   //   // headers: {'X-Custom-Header': 'foobar'}
   // });
-  // let url = "/api";
+  let url = "/api";
 
   // let url = instance;
   // if (process.env.NODE_ENV === "development") {
@@ -27,10 +27,10 @@ function App() {
       
       try {
         if (typeof pathname === 'undefined') {
-          const { data } = await instance.get();
+          const { data } = await instance.get(url);
           setData(data);
         } else {
-          const { data } = await instance.get(pathname);
+          const { data } = await instance.get(url+ pathname);
           setData(data);
         }
 
