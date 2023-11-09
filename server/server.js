@@ -8,10 +8,10 @@ const DeleteRouter = require('./routers/delete')
 const cors = require('cors');
 app.use(express.json())
 app.use(cors());
-// app.use(express.static(path.join(path.dirname(__dirname), "drive", "build")))
-app.use(express.static('userData'))
+app.use(express.static(path.join(path.dirname(__dirname), "drive", "build")))
+app.use("/api/" ,express.static('userData'))
 
-app.get('/*', GRouter)
+app.use('/api/', GRouter)
 app.put('/*',PutRouter)
 app.post('/*',PostRouter)
 app.delete('/*',DeleteRouter)

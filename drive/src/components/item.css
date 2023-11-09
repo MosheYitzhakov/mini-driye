@@ -2,6 +2,21 @@ span{
   margin: 10;
 }
 
+
+
+
+/* *{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 10px;
+  border: 10px solid #d72727;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  align-items: center;
+} */
+
 * a {
   text-decoration: none;
   color: #333;

@@ -7,13 +7,14 @@ const { allData } = require('../fonction');
 module.exports = router;
 
 
-router.get('/*', async (req, res) => {
+router.get('*', async (req, res) => {
+console.log(req.path);
 console.log(req.url);
 
     const namePath = path.join(__dirname, '..', 'userData', req.url)
-    const slicePath = namePath.slice(0, -1)
+    // const slicePath = namePath.slice(0, -1)
     try {
-        const data = await allData(slicePath);
+        const data = await allData(namePath);
         res.send(data)
 
     } catch (err) {

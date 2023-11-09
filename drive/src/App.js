@@ -9,7 +9,7 @@ function App() {
   const { pathname } = useLocation();
   const [data, setData] = useState();
   const [err, setEror] = useState();
-  const url = "http://localhost:3333";
+  const url = "http://localhost:3333/api";
   useEffect(() => {
     async function name() {
       try {
