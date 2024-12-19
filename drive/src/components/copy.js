@@ -1,12 +1,10 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import  instance  from './API';
 
-
-export const Copy = ({ setItems, name }) => {
+export const Copy = ({ setItems, name, setF }) => {
     const { pathname } = useLocation();
     const [neww, setNew] = useState('');
-    // const [select, setSelect] = useState('file');
     const [p, setP] = useState();
 
     const newFile = async (e) => {
@@ -21,7 +19,6 @@ export const Copy = ({ setItems, name }) => {
         if (!(DotName === DotNeww)) {
             if (DotName) {
                 DotName = name.split('.')
-
                 newName += `.${DotName[1]}`
             } else {
                 DotNeww = neww.split('.')
@@ -30,32 +27,25 @@ export const Copy = ({ setItems, name }) => {
 
         }
 
-        console.log(pathname === '/');
-        axios.put("http://localhost:3333" + pathname + name, {
+        instance.put(pathname + name, {
             name: newName,
             command: 'copy'
         }).then((data) => {
-            console.log(data);
-            console.log(`copy ${newName}`)
-            setItems([false, false])
+            setF((prv)=>[...prv, data.data])
+            setItems( false)
         }
         ).catch(e => {
-            console.error(e)
+            return setP(e.message)
         })
-        
     }
-
     return (
         <>
             <h3>new name to copy</h3>
-            {/* <form> */}
                 <input type="text" value={neww} onChange={e => { setNew(e.target.value) }} />
                 <br />
                 <button onClick={(e) => newFile(e)} >add</button>
                 <br />
-
                 {<p>{p}</p>}
-            {/* </form> */}
         </>
 
     )
